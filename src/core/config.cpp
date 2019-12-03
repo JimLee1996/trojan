@@ -72,6 +72,7 @@ void Config::populate(const ptree &tree) {
     ssl.key_password = tree.get("ssl.key_password", string());
     ssl.cipher = tree.get("ssl.cipher", string());
     ssl.prefer_server_cipher = tree.get("ssl.prefer_server_cipher", true);
+    ssl.prioritize_chacha = tree.get("prioritize_chacha", true);
     ssl.sni = tree.get("ssl.sni", string());
     ssl.alpn = "";
     for (auto& item: tree.get_child("ssl.alpn")) {

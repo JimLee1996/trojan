@@ -76,6 +76,9 @@ Service::Service(Config &config, bool test) :
         if (config.ssl.prefer_server_cipher) {
             SSL_CTX_set_options(native_context, SSL_OP_CIPHER_SERVER_PREFERENCE);
         }
+        if (config.ssl.prioritize_chacha) {
+            SSL_CTX_set_options(native_context, SSL_OP_PRIORITIZE_CHACHA);
+        }
         if (config.ssl.alpn != "") {
             SSL_CTX_set_alpn_select_cb(native_context, [](SSL*, const unsigned char **out, unsigned char *outlen, const unsigned char *in, unsigned int inlen, void *config) -> int {
                 if (SSL_select_next_proto((unsigned char**)out, outlen, (unsigned char*)(((Config*)config)->ssl.alpn.c_str()), ((Config*)config)->ssl.alpn.length(), in, inlen) != OPENSSL_NPN_NEGOTIATED) {

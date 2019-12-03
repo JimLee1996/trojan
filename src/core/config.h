@@ -51,6 +51,7 @@ public:
         std::string key_password;
         std::string cipher;
         bool prefer_server_cipher;
+        bool prioritize_chacha;
         std::string sni;
         std::string alpn;
         bool reuse_session;

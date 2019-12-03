@@ -162,6 +162,7 @@ The NAT config is for transparent proxy. You'll need to [setup iptables rules](h
         "key_password": "",
         "cipher": "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256",
         "prefer_server_cipher": true,
+        "prioritize_chacha": true,
         "alpn": [
             "http/1.1"
         ],
@@ -203,6 +204,7 @@ The NAT config is for transparent proxy. You'll need to [setup iptables rules](h
     - `key_password`: password of the private key file
     - `cipher`: a cipher list to use
     - `prefer_server_cipher`: whether to prefer server cipher list in a connection
+    - `prioritize_chacha`: temporarily reprioritize ChaCha20-Poly1305 ciphers to the top of the server cipher list for mobile clients
     - `alpn`: a list of `ALPN` protocols to reply
     - `reuse_session`: whether to reuse `SSL` session
     - `session_ticket`: whether to use session tickets for session resumption
